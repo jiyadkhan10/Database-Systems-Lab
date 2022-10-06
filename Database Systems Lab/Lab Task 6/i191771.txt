@@ -1,0 +1,144 @@
+Name: Jiyad Khan
+Roll Number: 19i-1771
+Section: BS-CS(B)
+Lab Task 6
+
+Query 1:
+
+SELECT
+    employee.last_name,
+    employee.hire_date
+
+FROM
+    employees employee
+
+JOIN employees davies ON
+    (davies.last_name = 'Davies')
+
+WHERE
+    davies.hire_date < employee.hire_date;
+
+Query 2:
+
+SELECT
+    employee.`last_name` AS "Employee",
+    employee.`hire_date` AS "Employee Hire Date",
+    manager.`last_name` AS "Manager",
+    manager.`hire_date` AS "Manager Hire Date"
+    
+FROM
+    employees employee
+    
+JOIN employees manager ON
+    (employee.`hire_date` < manager.`hire_date`);
+
+Query 3:
+
+SELECT
+    employee.`last_name`,
+    employee.`department_id`,
+    department.`department_name`
+    
+FROM
+    employees employee
+    
+JOIN departments department USING(`department_id`);
+
+Query 4:
+
+SELECT
+    employee.`last_name`,
+    employee.`job_id`,
+    employee.`department_id`,
+    department.`department_name`
+    
+FROM
+    employees employee
+    
+JOIN departments department ON
+    (
+        employee.`department_id` = department.`department_id`
+    )
+    
+JOIN locations location ON
+    (department.`location_id` = location.`location_id`)
+    
+WHERE
+    LOWER(location.`city`) = 'toronto';
+
+Query 5:
+
+SELECT
+    employee.`last_name` 	AS "Employee",
+    employee.`employee_id` AS "Employee Number",
+    manager.`last_name` AS "Manager",
+    manager.`employee_id` AS "Manager Number"
+    
+FROM
+    employees employee
+    
+JOIN employees manager ON
+    (employee.`manager_id` = manager.`employee_id`);
+
+Query 6:
+
+SELECT
+    department.department_id Department_id,
+    department.department_name Department,
+    employee.last_name Employee
+
+FROM
+    departments department,
+    employees employee
+
+WHERE
+    department.department_id = employee.department_id AND department.department_name <> employee.last_name;
+
+Query 8:
+
+SELECT
+    employee.last_name AS "Employee Name",
+    employee.hire_date AS "Hire Date"
+FROM
+    employees employee
+JOIN employees xx 
+ON
+    (
+        xx.last_name = 'Davies' AND employee.department_id = xx.department_id
+    )
+
+Query 9:
+
+SELECT
+    employee.`employee_id`,
+    employee.`last_name`
+    
+FROM
+    employees employee
+    
+JOIN employees department 
+
+ON
+    (
+        employee.`department_id` = department.`department_id` AND employee.`last_name` LIKE '%u%'
+    )
+
+Query 10:
+
+SELECT
+    employee.`last_name`,
+    employee.`employee_id`
+
+FROM
+    employees employee
+    
+JOIN departments department
+
+ON
+    (
+        employee.department_id = department.department_id
+    )
+
+WHERE
+    department.location_id = 1700
+

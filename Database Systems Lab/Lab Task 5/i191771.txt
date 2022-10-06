@@ -1,0 +1,85 @@
+Name: Jiyad Khan
+Roll Number: 19I-1771
+
+Query 1:
+
+SELECT
+    employee_id,
+    last_name,
+    salary,
+    salary +(salary * 15.5 / 100) AS "New Salary"
+FROM
+    employees;
+
+Query 2:
+
+SELECT
+    last_name,
+    ROUND(DATEDIFF(SYSDATE(), hire_date),0) AS "Months_worked"
+FROM
+	employees
+ORDER BY
+	2;
+
+Query 3:
+
+SELECT
+    last_name, TRUNCATE((SYSDATE()-hire_date)/7,0) AS "TENURE"
+FROM
+	employees
+WHERE
+	department_id = 90
+ORDER BY TENURE DESC;
+
+Query 4:
+
+SELECT job_id, CASE job_id
+WHEN 'ST_CLERK' THEN 'E'
+WHEN 'SA_REP' THEN 'D'
+WHEN 'IT_PROG' THEN 'C'
+WHEN 'ST_MAN' THEN 'B'
+WHEN 'AD_PRES' THEN 'A'
+ELSE '0' END GRADE
+FROM employees;
+
+Query 5:
+
+SELECT
+    job_id,
+    COUNT(*)
+FROM
+    employees
+GROUP BY
+    job_id;
+
+Query 6:
+
+SELECT
+    COUNT(DISTINCT manager_id) AS "Number of Managers"
+FROM
+    employees;
+
+Query 7:
+
+SELECT
+    manager_id, MIN(salary)
+FROM
+    employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id
+HAVING MIN(salary) > 6000
+ORDER BY MIN(salary) DESC;
+
+Query 8:
+
+SELECT COUNT(*) total,
+ SUM(CASE DATE_FORMAT(hire_date, 'YYYY') WHEN 1995 THEN 1 ELSE 0 END) AS "1995",
+ SUM(CASE DATE_FORMAT(hire_date, 'YYYY') WHEN 1996 THEN 1 ELSE 0 END) AS "1996",
+ SUM(CASE DATE_FORMAT(hire_date, 'YYYY') WHEN 1997 THEN 1 ELSE 0 END) AS "1997",
+ SUM(CASE DATE_FORMAT(hire_date, 'YYYY') WHEN 1998 THEN 1 ELSE 0 END) AS "1998"
+FROM employees; 
+
+
+
+
+

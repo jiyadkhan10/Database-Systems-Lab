@@ -1,0 +1,64 @@
+Name: Jiyad Khan
+Roll Number: 19I-1771
+
+Query:
+
+CREATE TABLE Product(
+    Product_ID INT(7)   Primary key,
+    Product_Name VARCHAR(25),
+    Product_Price INT(50),
+    Product_Description VARCHAR(50),
+    Product_Stock INT(50)	
+); 
+
+CREATE TABLE Supplier(
+    SupplierID INT(7)   Primary key,
+    Supplier_Name VARCHAR(25),
+    Supplier_Address VARCHAR(50),
+    Supplier_PhoneNo INT(50),
+    Supplier_City VARCHAR(50),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)
+); 
+
+CREATE TABLE Category(
+    Category_ID Invoice   Primary key,
+    Category_Name VARCHAR(25),
+    Category_Type VARCHAR(25),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)	
+); 
+
+CREATE TABLE Invoice(
+    Invoice_ID INT(7)   Primary key,
+    Invoice_Date To_Date,
+    Invoice_Totalamount INT(25),
+    Invoice_Tax INT(25),
+    Invoice_Discount INT(25),
+    Invoice_NetAmount INT(25),
+    FOREIGN KEY (Product_ID) REFERENCES Product(Product_ID)	
+); 
+
+CREATE TABLE Employee(
+    Employee_ID INT(7)   Primary key,
+    Employee_Name VARCHAR(25),
+    Employee_City VARCHAR(50),
+    Employee_MobileNumber INT(50)
+    FOREIGN KEY (Invoice) REFERENCES Invoice(Invoice)	
+); 
+
+CREATE TABLE Shipper(
+    Shipper_ID INT(7)   Primary key,
+    Shipper_Name VARCHAR(25),
+    Shipper_Address VARCHAR(50),
+    Shipper_PhoneNo INT(50),
+    Shipper_City VARCHAR(50),
+    FOREIGN KEY (Invoice) REFERENCES Invoice(Invoice)
+); 
+
+CREATE TABLE Customer(
+    Customer_ID INT(7)   Primary key,
+    Customer_Name VARCHAR(25),
+    Customer_Address VARCHAR(50),
+    Customer_PhoneNo INT(50),
+    Customer_City VARCHAR(50),
+    FOREIGN KEY (Invoice) REFERENCES Invoice(Invoice)
+); 

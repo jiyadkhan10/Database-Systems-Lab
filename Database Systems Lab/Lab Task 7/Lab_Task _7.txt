@@ -1,0 +1,62 @@
+Name: Jiyad Khan
+Roll No: 19I-1771
+
+Qurey 1:
+
+CREATE TABLE dept(
+    ID INT(7)   Primary key,
+    NAME VARCHAR(25)
+); 
+
+DESCRIBE
+    dept;
+
+Qurey 2:
+
+INSERT INTO dept
+SELECT  department_id, department_name
+FROM    departments;
+
+Qurey 3:
+
+CREATE TABLE emp(
+    ID INT(7),
+    LAST_NAME VARCHAR(25),
+    FIRST_NAME VARCHAR(25),
+    DEPT_ID INT(7),
+    FOREIGN KEY (DEPT_ID) REFERENCES DEPT(DEPT_ID),
+    FOREIGN KEY (DEPT_ID) REFERENCES ID(DEPT_ID)
+); 
+DESCRIBE
+    emp
+
+Qurey 4:
+
+CREATE TABLE EMPLOYEES2 
+SELECT
+    EMPLOYEE_ID ID,
+    FIRST_NAME,
+    LAST_NAME,
+    SALARY,
+    DEPARTMENT_ID DEPT_ID
+FROM employees;
+
+Qurey 5:
+
+ALTER TABLE employees2 READ ONLY
+
+Qurey 6:
+
+INSERT INTO employees2(ID, FIRST_NAME, LAST_NAME, SALARY, DEPT_ID)
+VALUES (34, 'Grant', 'Marcie', 5678, 10);
+
+Qurey 7:
+
+ALTER TABLE employees2 READ WRITE ONLY
+
+Qurey 8:
+
+DROP TABLE
+    employees2;
+i91716
+Salar1234
